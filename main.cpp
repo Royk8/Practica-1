@@ -6,7 +6,6 @@
 using namespace std;
 
 int main(){
-    menu://Bandera para volver al menu principal.
     char auxMenu[5];//Sirve para guardar el numero del menu y asi evitar errores con decimales.
     short menuPrincipal, menuSecundario;//Variables para navegar en el menu principal y secundario.
     cout<< "..::AREAS Y PERIMETROS::..\n" <<endl;
@@ -34,14 +33,15 @@ int main(){
             cout<< "..::AREAS Y PERIMETROS::..\n" <<endl;
             switch (menuSecundario){
                 case 1://Caso triangulo.
-                cout<<"Dimensiones Personalizadas: Triangulo"<<endl<<endl;
+                cout<<"Dimensiones Personalizadas: Triangulo.\nIngrese Cero (0) para terminar el programa."<<endl<<endl;
                     float triLado, triArea, triPe, triSP;//Lado, Area, Perimetro y Semi Perimetro respectivamente.
                     cout<< "Ingrese el lado del triangulo equilatero: ";
                     cin>> triLado;
-                    if(triLado<=0){//Se comprueba que la medida es positiva.
+                    if(triLado<0){//Se comprueba que la medida es positiva.
                         cout<<"\nERROR. Las dimensiones ingresadas deben ser positivas.\n\tVolviendo al menu principal."<<endl<<endl;
                         break;
-                    }
+                    }else if(triLado==0)
+                        exit(0);
                     triPe=3*triLado;
                     triSP=triPe/2;
                     triArea=pow((triSP*3*(triSP-triLado)),0.5);
@@ -51,14 +51,15 @@ int main(){
                 break;
 
                 case 2://Caso cuadrado.
-                    cout<<"Dimensiones Personalizadas: Cuadrado"<<endl<<endl;
+                    cout<<"Dimensiones Personalizadas: Cuadrado.\nIngrese Cero (0) para terminar el programa."<<endl<<endl;
                     float cuaLado, cuaArea, cuaPe;//Lado, Area y Perimetro respectivamente.
                     cout<< "Ingrese el lado del cuadrado: ";
                     cin>>cuaLado;
-                    if(cuaLado<=0){
+                    if(cuaLado<0){
                         cout<<"\nERROR. Las dimensiones ingresadas deben ser positivas.\n\tVolviendo al menu principal."<<endl<<endl;
                         break;
-                    }
+                    }else if(cuaLado==0)
+                        exit(0);
                     cuaArea= pow(cuaLado,2);
                     cuaPe= cuaLado*4;
                     cout<< "\n\t Para su cuadrado de lado "<<cuaLado<<endl;
@@ -67,14 +68,15 @@ int main(){
                 break;
 
                 case 3://Caso Circulo
-                    cout<<"Dimensiones Personalizadas: Circulo"<<endl<<endl;
+                    cout<<"Dimensiones Personalizadas: Circulo.\nIngrese Cero (0) para terminar el programa."<<endl<<endl;
                     float diam, rad, cirPe, cirArea;//Diametro, Radio, Perimetro y Area respectivamente.
                     cout<< "Ingrese el diametro del circulo: ";
                     cin>> diam;
-                    if(diam<=0){
+                    if(diam<0){
                         cout<<"\nERROR. Las dimensiones ingresadas deben ser positivas.\n\tVolviendo al menu principal."<<endl<<endl;
                         break;
-                    }
+                    }else if(diam==0)
+                        exit(0);
                     rad=diam/2;
                     cirPe=M_PI*diam;
                     cirArea=M_PI*pow(rad,2);
@@ -84,15 +86,21 @@ int main(){
                 break;
 
                 case 4://Caso Trapecio
-                    cout<<"Dimensiones Personalizadas: Trapecio"<<endl<<endl;
+                    cout<<"Dimensiones Personalizadas: Trapecio.\nIngrese Cero (0) para terminar el programa."<<endl<<endl;
                     float baseIn, baseSu, traH, traArea, traPe;//Base inferior, superior, altura, area y perimetro respectivamente.
                     cout << "Ingrese la base inferior del Trapecio: ";
                     cin >> baseIn;
+                    if(baseIn==0)
+                        exit(0);
                     cout<< "Ingrese la base superior del Trapecio: ";
                     cin>> baseSu;
+                    if(baseSu==0)
+                        exit(0);
                     cout<< "Ingrese la altura del Trapecio: ";
                     cin>> traH;
-                    if(baseIn<=0||baseSu<=0||traH<=0){
+                    if(traH==0)
+                        exit(0);
+                    if(baseIn<0||baseSu<0||traH<0){
                         cout<<"\nERROR. Todas dimensiones ingresadas deben ser positivas.\n\tVolviendo al menu principal."<<endl<<endl;
                         break;
                     }
@@ -105,13 +113,9 @@ int main(){
 
                 case 6://Caso cerrar programa en el menu secundario.
                     exit (0);
-                default://Caso Volver al menu principal.
-                    system("cls");
-                    goto menu;
-            }
+                }
             system("pause");//Pausa para que el usuario tenga tiempo de leer los resultados.
-            system("cls");//Limpia resultados
-            goto menu;//Vuelve al menu principal despues de visualizar los resultados.
+
         break;//Break Caso ingresar dimensiones personalizadas para las figuras.
         case 2://Caso generacion aleatoria
             cout<<"Dimensiones Aleatorias"<<endl<<endl;
@@ -131,14 +135,18 @@ int main(){
             cout<< "..::AREAS Y PERIMETROS::..\n" <<endl;
             switch (menuSecundario){
                 case 1://Caso Triangulo
-                    cout<<"Dimensiones Aleatorias: Triangulo"<<endl<<endl;
+                    cout<<"Dimensiones Aleatorias: Triangulo.\nIngrese Cero (0) para terminar el programa."<<endl<<endl;
                     float triA, triB, triC, triArea, triPe, triSP;//Lados A, B y C; Area, Perimetro y Semi Perimetro respectuvamente.
                     cout<<"Ingrese un valor entero positivo para el rango inferior en la generacion aleatoria: ";
                     cin>>auxRango;
                     min=atoi(auxRango);
+                    if(min==0)
+                        exit(0);
                     cout<<"Ingrese un valor entero positivo para el rango superior en la generacion aleatoria: ";
                     cin>>auxRango;
                     max=atoi(auxRango);
+                    if(max==0)
+                        exit(0);
                     if(min<=0||max<=0){//Se comprueba que el rango es positivo.
                         cout<<"\nERROR. Las dimensiones ingresadas deben ser positivas.\n\tVolviendo al menu principal."<<endl<<endl;
                         break;
@@ -171,14 +179,18 @@ int main(){
                 break;
 
                 case 2://Caso Cuadrado
-                    cout<<"Dimensiones Aleatorias: Cuadrado"<<endl<<endl;
+                    cout<<"Dimensiones Aleatorias: Cuadrado.\nIngrese Cero (0) para terminar el programa."<<endl<<endl;
                     float cuaLado1, cuaLado2, cuaLado3, cuaLado4, cuaArea, cuaPe;//Cuatro lados, area y perimetro respectivamente.
                     cout<<"Ingrese un valor entero positivo para el rango inferior de la generacion aleatoria: ";
                     cin>>auxRango;
                     min=atoi(auxRango);
+                    if(min==0)
+                        exit(0);
                     cout<<"Ingrese un valor entero positivo para el rango superior de la generacion aleatoria: ";
                     cin>>auxRango;
                     max=atoi(auxRango);
+                    if(max==0)
+                        exit(0);
                     if(min<=0||max<=0){
                         cout<<"\nERROR. Las dimensiones ingresadas deben ser positivas.\n\tVolviendo al menu principal."<<endl<<endl;
                         break;
@@ -206,14 +218,18 @@ int main(){
                 break;
 
                 case 3://Caso Circulo
-                    cout<<"Dimensiones Aleatorias: Circulo"<<endl<<endl;
+                    cout<<"Dimensiones Aleatorias: Circulo.\nIngrese Cero (0) para terminar el programa."<<endl<<endl;
                     float diamEx, radEx, arEx, arIn, radIn, arDona;//Diametro, radio y area del circulo exterior; area y radio del circulo interior; y area de la dona generada.
                     cout<<"Ingrese un valor entero positivo para el rango inferior de la generacion aleatoria: ";
                     cin>>auxRango;
                     min=atoi(auxRango);
+                    if(min==0)
+                        exit(0);
                     cout<<"Ingrese un valor entero positivo para el rango superior de la generacion aleatoria: ";
                     cin>>auxRango;
                     max=atoi(auxRango);
+                    if(max==0)
+                        exit(0);
                     if(min<=0||max<=0){
                         cout<<"\nERROR. Las dimensiones ingresadas deben ser positivas.\n\tVolviendo al menu principal."<<endl<<endl;
                         break;
@@ -235,14 +251,18 @@ int main(){
                 break;
 
                 case 4://Caso Trapecio
-                    cout<<"Dimensiones Aleatorias: Trapecio"<<endl<<endl;
+                    cout<<"Dimensiones Aleatorias: Trapecio.\nIngrese Cero (0) para terminar el programa."<<endl<<endl;
                     float baseIn, baseSu, traH, traArea, traPe;
                     cout<<"Ingrese un valor entero positivo para el rango inferior de la generacion aleatoria: ";
                     cin>>auxRango;
                     min=atoi(auxRango);
+                    if(min==0)
+                        exit(0);
                     cout<<"Ingrese un valor entero positivo para el rango superior de la generacion aleatoria: ";
                     cin>>auxRango;
                     max=atoi(auxRango);
+                    if(max==0)
+                        exit(0);
                     if(min<=0||max<=0){
                         cout<<"ERROR. Las dimensiones ingresadas deben ser positivas.\n\tVolviendo al menu principal."<<endl<<endl;
                         break;
@@ -266,20 +286,11 @@ int main(){
                 case 6://Caso salir del programa en el menu secundario.
                     exit (0);
 
-                default://Caso Volver al menu principal.
-                    system("cls");
-                    goto menu;
             }
             system("pause");
-            system("cls");//Limpia resultados antes de volver al menu principal.
-            goto menu;
-
+            break;//Break de caso numeros aleatorios.
         case 3://Caso Salir del programa en el menu principal.
             exit(0);
-
-        default://Caso Volver al menu principal si se ingresa una opcion no valida.
-            system("cls");
-            goto menu;
 
    }//Fin del Switch principal.
 }
