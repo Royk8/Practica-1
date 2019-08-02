@@ -6,12 +6,13 @@
 using namespace std;
 
 int main(){
+    system("color f9");
     char auxMenu[5];//Sirve para guardar el numero del menu y asi evitar errores con decimales.
     short menuPrincipal, menuSecundario;//Variables para navegar en el menu principal y secundario.
     cout<< "..::AREAS Y PERIMETROS::..\n" <<endl;
     cout<< "Ingrese el indice de la operacion deseada "<< endl;
     cout<< "\t1. Ingresar tus propios datos."<< endl;
-    cout<< "\t2. Generar datos aleatorio" <<endl;
+    cout<< "\t2. Generar datos aleatorios." <<endl;
     cout<< "\t3. Salir."<< endl;
     cin>>auxMenu;
     menuPrincipal=atoi(auxMenu);//Convierte la cadena de caracteres a un entero.
@@ -19,14 +20,14 @@ int main(){
     cout<< "..::AREAS Y PERIMETROS::..\n" <<endl;//Escribe Titulo
     switch (menuPrincipal){
         case 1://Caso ingresar dimensiones personalizadas para las figuras.
+            system("color f5");
             cout<< "Dimensiones Personalizadas"<<endl<<endl;
             cout<< "Ingrese el indice de la figura deseada " <<endl;
             cout<< "\t1. Triangulo"<< endl;
             cout<< "\t2. Cuadrado"<< endl;
             cout<< "\t3. Circulo"<< endl;
             cout<< "\t4. Trapecio"<< endl;
-            cout<< "\t5. Volver"<< endl;
-            cout<< "\t6. Salir"<< endl;
+            cout<< "\t5. Salir"<< endl;
             cin>> auxMenu;
             menuSecundario=atoi(auxMenu);
             system("cls");
@@ -111,13 +112,21 @@ int main(){
                     cout<< "\t El area es: "<< traArea<<endl<<endl;
                 break;
 
-                case 6://Caso cerrar programa en el menu secundario.
+                case 5://Caso cerrar programa en el menu secundario.
+                    cout<<"Saliendo... Adios...:("<<endl;//Saliendo
+                    system("pause");
+                    exit(0);
+
+                default://Caso error en el menu.
+                    cout<<"Seleccion no valida. Saliendo..."<<endl;//Saliendo
+                    system("pause");
                     exit (0);
                 }
             system("pause");//Pausa para que el usuario tenga tiempo de leer los resultados.
 
         break;//Break Caso ingresar dimensiones personalizadas para las figuras.
         case 2://Caso generacion aleatoria
+            system("color f0");
             cout<<"Dimensiones Aleatorias"<<endl<<endl;
             srand(time(NULL));//Inicia semilla aleatoria.
             char auxRango[5];//Auxiliar usado para eliminar decimales de los valores de los rangos de generacion aleatoria
@@ -127,8 +136,7 @@ int main(){
             cout<< "\t2. Cuadrado"<< endl;
             cout<< "\t3. Circulo"<< endl;
             cout<< "\t4. Trapecio"<< endl;
-            cout<< "\t5. Volver"<< endl;
-            cout<< "\t6. Salir"<< endl;
+            cout<< "\t5. Salir"<< endl;
             cin>> auxMenu;
             menuSecundario=atoi(auxMenu);
             system("cls");
@@ -209,7 +217,7 @@ int main(){
                     if ((cuaLado1==cuaLado2)&&(cuaLado1==cuaLado3)&&(cuaLado1==cuaLado4)){
                         cout<<"Se formo un cuadrado."<<endl;
                         cuaArea= pow(cuaLado1,2);
-                        cuaPe= cuaLado1*cuaLado2*cuaLado3*cuaLado4;
+                        cuaPe= cuaLado1+cuaLado2+cuaLado3+cuaLado4;
                         cout<< "\t El perimetro es: "<<cuaPe<< endl;
                         cout<< "\t El area es: "<< cuaArea<<endl<<endl;
                     }
@@ -283,14 +291,26 @@ int main(){
                     cout<< "\t El area es: "<< traArea<<endl<<endl;
                 break;
 
-                case 6://Caso salir del programa en el menu secundario.
+                case 5://Caso salir del programa en el menu secundario.
+                    cout<<"Saliendo... Adios... :("<<endl;//Saliendo
+                    system("pause");
+                    exit (0);
+                default://Caso error en el menu.
+                    cout<<"Seleccion no valida. Saliendo..."<<endl;//Saliendo
+                    system("pause");
                     exit (0);
 
             }
             system("pause");
             break;//Break de caso numeros aleatorios.
         case 3://Caso Salir del programa en el menu principal.
+            cout<<"Saliendo... Adios... :("<<endl;//Saliendo
+            system("pause");
             exit(0);
+        default://Caso error en el menu.
+            cout<<"Seleccion no valida. Saliendo..."<<endl;//Saliendo
+            system("pause");
+            exit (0);
 
    }//Fin del Switch principal.
 }
